@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Models
+namespace DataAccess.Repositories
 {
-    public class User
+    internal class DishRepository
     {
-        
     }
 }

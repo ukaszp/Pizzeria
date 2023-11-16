@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,9 @@ namespace Application.Abstractions
 {
     public interface IAddressRepository
     {
+        Task<Address> CreateAddress(Address address);
+        Task DeleteAddress(int addressId);
+        Task GetAddressById(int addressId);
+
     }
 }

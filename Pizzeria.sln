@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzeriaAPI", "PizzeriaAPI\PizzeriaAPI.csproj", "{DEDC3F12-64F2-4E22-8BA0-DB4822591172}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityAPI", "IdentityAPI\IdentityAPI.csproj", "{071AE866-A422-49A7-AEEB-301B90D5D9B6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{DEDC3F12-64F2-4E22-8BA0-DB4822591172}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEDC3F12-64F2-4E22-8BA0-DB4822591172}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEDC3F12-64F2-4E22-8BA0-DB4822591172}.Release|Any CPU.Build.0 = Release|Any CPU
-		{071AE866-A422-49A7-AEEB-301B90D5D9B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{071AE866-A422-49A7-AEEB-301B90D5D9B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{071AE866-A422-49A7-AEEB-301B90D5D9B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{071AE866-A422-49A7-AEEB-301B90D5D9B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
