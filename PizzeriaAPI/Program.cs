@@ -1,3 +1,6 @@
+using Application;
+using DataAccess;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+builder.Services
+    .AddApplication()
+    .AddDataAccess()
+    .AddDomain();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
