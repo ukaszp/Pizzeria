@@ -12,10 +12,7 @@ namespace DataAccess
     {
         readonly string _connectrionString =
             "Server = (localdb)\\MSSQLLocalDB; Database=PizzeriaDb;Trusted_Connection=True";
-        public PizzeriaDbContext(DbContextOptions opt):base(opt)
-        {
-            
-        }
+        
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Dish> Dishes { get; set; }
         public DbSet<Order> Orders { get; set; }

@@ -12,7 +12,6 @@ namespace Domain.Models
         public int Id { get; set; }
         public int ServiceUserId { get; set; }
         public User ServiceUser { get; set; }
-        
         public IEnumerable<Order> Orders { get; set; }
     }
 }
