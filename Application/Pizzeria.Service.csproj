@@ -12,7 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\AccountService\AccountApi.csproj" />
+    <ProjectReference Include="..\DataAccess\Pizzeria.DataAccess.csproj" />
+    <ProjectReference Include="..\Domain\Pizzeria.Domain.csproj" />
   </ItemGroup>
 
 </Project>

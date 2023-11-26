@@ -11,7 +11,7 @@ namespace Domain.Models
     {
         [Key]
         public int Id { get; set; }
-        public User User { get; set; }
+        public int UserId { get; set; }
         public IEnumerable<Dish> Dishes { get; set; }
         public float TotalPrice { get; set; }
         public Address Address { get; set; }
