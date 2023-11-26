@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{6C13D53C-9AE6-466A-88E4-031C081E6CF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzeria.Domain", "Domain\Pizzeria.Domain.csproj", "{6C13D53C-9AE6-466A-88E4-031C081E6CF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{2A1F3750-1DA5-4C71-82D5-D62631750D61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzeria.DataAccess", "DataAccess\Pizzeria.DataAccess.csproj", "{2A1F3750-1DA5-4C71-82D5-D62631750D61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{A4A40FCF-7828-48EF-B6EB-47001CFE341D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzeria.Service", "Application\Pizzeria.Service.csproj", "{A4A40FCF-7828-48EF-B6EB-47001CFE341D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzeriaAPI", "PizzeriaAPI\PizzeriaAPI.csproj", "{DEDC3F12-64F2-4E22-8BA0-DB4822591172}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzeriaAPI", "PizzeriaAPI\PizzeriaAPI.csproj", "{DEDC3F12-64F2-4E22-8BA0-DB4822591172}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountApi", "AccountService\AccountApi.csproj", "{47808542-73A4-4E81-9929-66EBAE079952}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{DEDC3F12-64F2-4E22-8BA0-DB4822591172}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEDC3F12-64F2-4E22-8BA0-DB4822591172}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEDC3F12-64F2-4E22-8BA0-DB4822591172}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47808542-73A4-4E81-9929-66EBAE079952}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47808542-73A4-4E81-9929-66EBAE079952}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47808542-73A4-4E81-9929-66EBAE079952}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47808542-73A4-4E81-9929-66EBAE079952}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
