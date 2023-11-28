@@ -2,7 +2,7 @@
 using AccountApi.Models;
 using Domain.Models;
 
-namespace Pizzeria.Service.Services
+namespace Pizzeria.Service.Abstractions
 {
     internal interface IPizzeriaUserService
     {

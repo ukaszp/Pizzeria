@@ -17,10 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AccountService\AccountApi.csproj" />
     <ProjectReference Include="..\Application\Pizzeria.Service.csproj" />
-    <ProjectReference Include="..\DataAccess\Pizzeria.DataAccess.csproj" />
-    <ProjectReference Include="..\Domain\Pizzeria.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
