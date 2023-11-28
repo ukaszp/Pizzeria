@@ -1,0 +1,3 @@
+const DeteleUserModal = (userId:number) => {
+    
+}

@@ -1,3 +1,4 @@
+using AccountApi;
 using Application;
 using DataAccess;
 
@@ -13,7 +14,8 @@ var app = builder.Build();
 builder.Services
     .AddApplication()
     .AddDataAccess()
-    .AddDomain();
+    .AddDomain()
+    .AddAccoungAPIAccess();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
