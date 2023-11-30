@@ -20,7 +20,6 @@ namespace Pizzeria.Service.Services
         private readonly IRoleService roleService;
         private readonly IPizzeriaUserService pizzeriaUserService;
         private readonly PizzeriaDbContext dbContext;
-        private List<Dish> dishesPickedByUser;
 
         public PizzeriaService(RoleService roleService, IPizzeriaUserService pizzeriaUserService, PizzeriaDbContext dbContext)
         {
@@ -66,7 +65,7 @@ namespace Pizzeria.Service.Services
             var newOrder = new Order()
             {
                 UserId = userId,
-                Dishes = dishesPickedByUser,
+                Dishes = dishes,
                 TotalPrice = dishes.Sum(d => d.Price),
                 Address = address,
                 WhenOrdered = DateTime.Now,
