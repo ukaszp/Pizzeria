@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Pizzeria.Service.Services
 {
-    internal class PizzeriaUserService : IPizzeriaUserService
+    public class PizzeriaUserService : IPizzeriaUserService
     {
         private readonly IUserService userService;
         private readonly PizzeriaDbContext dbContext;

@@ -4,7 +4,7 @@ using Domain.Models;
 
 namespace Pizzeria.Service.Abstractions
 {
-    internal interface IPizzeriaUserService
+    public interface IPizzeriaUserService
     {
         void AssignRole(int roleId, int pizzeriaUserId);
         void DeleteUser(int pizzeriaUserId);
