@@ -17,14 +17,14 @@ namespace Pizzeria.Service.Services
 {
     public class PizzeriaService : IPizzeriaService
     {
-        private readonly IRoleService roleService;
         private readonly IPizzeriaUserService pizzeriaUserService;
+        private readonly IRoleService roleService;
         private readonly PizzeriaDbContext dbContext;
 
-        public PizzeriaService(RoleService roleService, IPizzeriaUserService pizzeriaUserService, PizzeriaDbContext dbContext)
+        public PizzeriaService(IPizzeriaUserService pizzeriaUserService, IRoleService roleService, PizzeriaDbContext dbContext)
         {
-            this.roleService = roleService;
             this.pizzeriaUserService = pizzeriaUserService;
+            this.roleService = roleService;
             this.dbContext = dbContext;
         }
 
@@ -73,16 +73,6 @@ namespace Pizzeria.Service.Services
             };
 
             return newOrder;
-        }
-        public void CreateDishesList(int dishId)
-        {
-            var dish = dbContext
-                .Dishes
-                .FirstOrDefault(dish => dish.Id == dishId);
-
-            if (dish != null)
-                dishesPickedByUser.Add(dish);
-            else throw new NotFoundException("dish not found");
         }
 
         public IEnumerable<Dish> GetDishes()

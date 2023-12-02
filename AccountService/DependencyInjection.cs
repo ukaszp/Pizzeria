@@ -2,7 +2,7 @@
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddAccoungAPIAccess(this IServiceCollection services)
+        public static IServiceCollection AddAccountAPIAccess(this IServiceCollection services)
         {
             return services;
         }

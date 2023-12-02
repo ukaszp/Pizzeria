@@ -57,20 +57,6 @@ namespace YourNamespace.Controllers
             }
         }
 
-        [HttpPost("CreateDishesList/{dishId}")]
-        public ActionResult CreateDishesList(int dishId)
-        {
-            try
-            {
-                pizzeriaService.CreateDishesList(dishId);
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
         [HttpGet("GetDishes")]
         public ActionResult<IEnumerable<Dish>> GetDishes()
         {
