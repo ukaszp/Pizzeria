@@ -20,16 +20,9 @@ namespace PizzeriaAPI.Controllers
         [HttpPost("RegisterUser")]
         public ActionResult<PizzeriaUser> RegisterUser([FromBody] CreateUserDto dto)
         {
-            try
-            {
+            
                 var result = pizzeriaUserService.RegisterUser(dto);
                 return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                // Handle exceptions and return appropriate status code
-                return BadRequest(ex.Message);
-            }
         }
 
         [HttpGet("GetAccountInfo/{pizzeriaUserId}")]

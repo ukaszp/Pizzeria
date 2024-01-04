@@ -15,6 +15,7 @@ using NLog.Web;
 using Pizzeria.Service.Abstractions;
 using Pizzeria.Service.Services;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
@@ -40,6 +41,7 @@ builder.Services.AddAuthentication(option =>
     };
 });
 
+
 //Nlog
 builder.Logging.ClearProviders();
 builder.Host.UseNLog();
@@ -49,13 +51,13 @@ builder.Services.AddControllers();
 builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddSingleton(authenticationSettings);
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<AccountDbContext>();
-builder.Services.AddDbContext<PizzeriaDbContext>();
+
+
+
 
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IUserService, UserService>();
@@ -64,6 +66,9 @@ builder.Services.AddScoped<IUserContextService, UserContextService>();
 
 builder.Services.AddScoped<IPizzeriaService, PizzeriaService>();
 builder.Services.AddScoped<IPizzeriaUserService, PizzeriaUserService>();
+
+builder.Services.AddDbContext<AccountDbContext>();
+builder.Services.AddDbContext<PizzeriaDbContext>();
 
 builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
