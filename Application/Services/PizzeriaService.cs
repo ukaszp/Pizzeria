@@ -1,5 +1,4 @@
 ﻿using AccountApi.Exceptions;
-using AccountApi.Migrations;
 using AccountApi.Services;
 using DataAccess;
 using Domain.Models;

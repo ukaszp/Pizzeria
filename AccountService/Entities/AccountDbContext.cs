@@ -36,8 +36,9 @@ namespace AccountApi.Entities
              .HasMaxLength(25);
 
             modelBuilder.Entity<Role>()
-             .Property(r => r.Id)
-             .ValueGeneratedNever();
+                .Property(r => r.Id)
+                .ValueGeneratedNever();
+
 
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

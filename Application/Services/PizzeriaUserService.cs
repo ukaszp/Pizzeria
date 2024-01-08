@@ -30,7 +30,6 @@ namespace Pizzeria.Service.Services
             var serviceUser = userService.CreateUser(dto);
             var newPizzeriaUser = new PizzeriaUser()
             {
-                ServiceUser = serviceUser,
                 ServiceUserId = serviceUser.Id,
             };
             dbContext.Add(newPizzeriaUser);
