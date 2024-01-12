@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Pizzeria.DataAccess.Migrations
 {
     [DbContext(typeof(PizzeriaDbContext))]
-    [Migration("20240108202640_v1")]
-    partial class v1
+    [Migration("20240109220909_xd1")]
+    partial class xd1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,6 +73,10 @@ namespace Pizzeria.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -107,14 +111,11 @@ namespace Pizzeria.DataAccess.Migrations
                     b.Property<bool>("IsDone")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("PizzeriaUserId")
+                    b.Property<int>("PizzeriaUserId")
                         .HasColumnType("int");
 
                     b.Property<float>("TotalPrice")
                         .HasColumnType("real");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("WhenOrdered")
                         .HasColumnType("datetime2");
@@ -153,17 +154,22 @@ namespace Pizzeria.DataAccess.Migrations
 
             modelBuilder.Entity("Domain.Models.Order", b =>
                 {
-                    b.HasOne("Domain.Models.Address", "Address")
-                        .WithMany()
+                    b.HasOne("Domain.Models.Address", null)
+                        .WithMany("Orders")
                         .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Domain.Models.PizzeriaUser", null)
                         .WithMany("Orders")
-                        .HasForeignKey("PizzeriaUserId");
+                        .HasForeignKey("PizzeriaUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
 
-                    b.Navigation("Address");
+            modelBuilder.Entity("Domain.Models.Address", b =>
+                {
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("Domain.Models.Order", b =>

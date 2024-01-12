@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Pizzeria.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class v1 : Migration
+    public partial class xd1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -48,12 +48,11 @@ namespace Pizzeria.DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: false),
+                    PizzeriaUserId = table.Column<int>(type: "int", nullable: false),
                     TotalPrice = table.Column<float>(type: "real", nullable: false),
                     AddressId = table.Column<int>(type: "int", nullable: false),
                     WhenOrdered = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsDone = table.Column<bool>(type: "bit", nullable: false),
-                    PizzeriaUserId = table.Column<int>(type: "int", nullable: true)
+                    IsDone = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -68,7 +67,8 @@ namespace Pizzeria.DataAccess.Migrations
                         name: "FK_Orders_Users_PizzeriaUserId",
                         column: x => x.PizzeriaUserId,
                         principalTable: "Users",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -78,6 +78,7 @@ namespace Pizzeria.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SizeInCm = table.Column<int>(type: "int", nullable: true),
                     Price = table.Column<float>(type: "real", nullable: false),

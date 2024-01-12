@@ -1,4 +1,5 @@
 ﻿using Domain.Models;
+using Pizzeria.Domain.Models;
 
 namespace Pizzeria.Service.Services
 {
@@ -6,8 +7,10 @@ namespace Pizzeria.Service.Services
     {
         Address AddAddress(Address address);
         Dish AddDish(Dish dish);
+        Dish GetDishById(int id);
         void ChangeOrderStatus(int orderid);
-        Order CreateOrder(IEnumerable<Dish> dishes, Address address, int userId);
+        void DeleteDish(int id);
+        Order CreateOrder(IEnumerable<int> dishIds, int addressId, int pizzeriaUserId);
         IEnumerable<Dish> GetDishes();
     }
 }

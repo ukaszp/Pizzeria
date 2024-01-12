@@ -101,7 +101,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors("AccountClient");
+app.UseCors(builder =>
+{
+    builder.AllowAnyOrigin()
+           .AllowAnyHeader()
+           .AllowAnyMethod();
+});
 app.UseMiddleware<ErrorHandlingMiddleware>();
 app.UseAuthentication();
 

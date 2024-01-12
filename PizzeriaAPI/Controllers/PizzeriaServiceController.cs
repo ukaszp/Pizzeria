@@ -1,4 +1,6 @@
-﻿using Domain.Models;
+﻿using AccountApi.Entities;
+using AccountApi.Services;
+using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Pizzeria.Service.Services;
 
@@ -44,11 +46,11 @@ namespace YourNamespace.Controllers
         }
 
         [HttpPost("CreateOrder")]
-        public ActionResult<Order> CreateOrder([FromBody] Order requestDto)
+        public ActionResult<Order> CreateOrder([FromBody] IEnumerable<int> dishIds, int addressId, int pizzeriaUserId)
         {
             try
             {
-                var result = pizzeriaService.CreateOrder(requestDto.Dishes, requestDto.Address, requestDto.UserId);
+                var result = pizzeriaService.CreateOrder(dishIds, addressId, pizzeriaUserId);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -57,7 +59,7 @@ namespace YourNamespace.Controllers
             }
         }
 
-        [HttpGet("GetDishes")]
+        [HttpGet("dishes")]
         public ActionResult<IEnumerable<Dish>> GetDishes()
         {
             try
@@ -70,8 +72,22 @@ namespace YourNamespace.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpDelete("dishes/{id}")]
+        public ActionResult Delete([FromRoute] int id)
+        {
+            pizzeriaService.DeleteDish(id);
 
-        [HttpPost("ChangeOrderStatus/{orderId}")]
+            return NoContent();
+        }
+        [HttpGet("dishes/{id}")]
+        public ActionResult<User> Get([FromRoute] int id)
+        {
+            var dish = pizzeriaService.GetDishById(id);
+
+            return Ok(dish);
+        }
+
+        [HttpPost("changeorderstatus/{orderId}")]
         public ActionResult ChangeOrderStatus(int orderId)
         {
             try

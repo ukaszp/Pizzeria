@@ -1,5 +1,6 @@
 ﻿using Domain.Models;
 using Microsoft.EntityFrameworkCore;
+using Pizzeria.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,6 @@ namespace DataAccess
         {
             optionsBuilder.UseSqlServer(_connectrionString);
         }
+        
     }
 }

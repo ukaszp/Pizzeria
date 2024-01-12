@@ -1,9 +1,11 @@
-﻿using AccountApi.Exceptions;
+﻿using AccountApi.Entities;
+using AccountApi.Exceptions;
 using AccountApi.Services;
 using DataAccess;
 using Domain.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
+using Pizzeria.Domain.Models;
 using Pizzeria.Service.Abstractions;
 using System;
 using System.Collections.Generic;
@@ -32,6 +34,7 @@ namespace Pizzeria.Service.Services
             var newDish = new Dish()
             {
                 Name = dish.Name,
+                ImageUrl = dish.ImageUrl,
                 Description = dish.Description,
                 SizeInCm = dish.SizeInCm,
                 Price = dish.Price
@@ -39,6 +42,27 @@ namespace Pizzeria.Service.Services
             dbContext.Dishes.Add(newDish);
             dbContext.SaveChanges();
             return newDish;
+        }
+        public void DeleteDish(int id)
+        {
+         
+            var dish = dbContext
+                .Dishes
+                .FirstOrDefault(u => u.Id == id);
+
+            if (dish is null)
+                throw new NotFoundException("Dish not found");
+
+            dbContext.Dishes.Remove(dish);
+            dbContext.SaveChanges();
+        }
+        public Dish GetDishById(int id)
+        {
+            var dish = dbContext
+                .Dishes
+                .FirstOrDefault(u => u.Id == id);
+
+            return dish == null ? throw new NotFoundException("Dish not found") : dish;
         }
 
         public Address AddAddress(Address address)
@@ -58,18 +82,23 @@ namespace Pizzeria.Service.Services
             return newAddress;
         }
 
-        public Order CreateOrder(IEnumerable<Dish> dishes, Address address, int userId)
+        public Order CreateOrder(IEnumerable<int> dishIds, int addressId, int pizzeriaUserId)
         {
 
             var newOrder = new Order()
             {
-                UserId = userId,
-                Dishes = dishes,
-                TotalPrice = dishes.Sum(d => d.Price),
-                Address = address,
+                PizzeriaUserId = pizzeriaUserId,
+                Dishes = GetDishesByIds(dishIds),
+                AddressId = addressId,
                 WhenOrdered = DateTime.Now,
                 IsDone = false
             };
+
+            float totalPrice = dbContext.Dishes.Where(d => dishIds.Contains(d.Id)).Sum(d => d.Price);
+            newOrder.TotalPrice = totalPrice;
+
+            dbContext.Orders.Add(newOrder);
+            dbContext.SaveChanges();
 
             return newOrder;
         }
@@ -99,5 +128,13 @@ namespace Pizzeria.Service.Services
             }
 
         }
+
+        private List<Dish> GetDishesByIds(IEnumerable<int> dishIds)
+        {           
+                return dbContext.Dishes
+                    .Where(d => dishIds.Contains(d.Id))
+                    .ToList();
+        }
+
     }
 }
